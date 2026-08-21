@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>For Dada 🌼💛</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow: hidden;
+      font-family: "Trebuchet MS", sans-serif;
+      background: linear-gradient(135deg, #fffbea, #fff4b8, #fffdf2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #6b5420;
+    }
+
+    /* Floating decorations */
+    .flower,
+    .heart,
+    .sparkle {
+      position: absolute;
+      pointer-events: none;
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .flower {
+      font-size: 35px;
+    }
+
+    .heart {
+      font-size: 22px;
+      animation-duration: 4s;
+    }
+
+    .sparkle {
+      font-size: 20px;
+      animation-duration: 3s;
+    }
+
+    .f1 { top: 8%; left: 8%; }
+    .f2 { top: 15%; right: 10%; animation-delay: 1s; }
+    .f3 { bottom: 12%; left: 12%; animation-delay: 2s; }
+    .f4 { bottom: 8%; right: 9%; animation-delay: 1.5s; }
+
+    .h1 { top: 30%; left: 6%; }
+    .h2 { top: 20%; right: 20%; animation-delay: 1s; }
+    .h3 { bottom: 28%; right: 7%; animation-delay: 2s; }
+    .h4 { bottom: 18%; left: 22%; animation-delay: .5s; }
+
+    .s1 { top: 10%; left: 35%; }
+    .s2 { top: 25%; right: 35%; animation-delay: 1s; }
+    .s3 { bottom: 15%; left: 40%; animation-delay: 2s; }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-15px) rotate(8deg);
+      }
+    }
+
+    /* Main card */
+    .card {
+      width: 90%;
+      max-width: 430px;
+      padding: 45px 25px;
+      text-align: center;
+
+      background: rgba(255, 255, 255, 0.72);
+      border: 2px solid rgba(245, 211, 75, 0.45);
+      border-radius: 35px;
+
+      box-shadow:
+        0 20px 50px rgba(190, 150, 40, 0.18),
+        inset 0 0 30px rgba(255, 255, 255, 0.7);
+
+      backdrop-filter: blur(10px);
+
+      animation: appear 1.2s ease;
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: scale(.85) translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    /* Cat */
+    .cat {
+      font-size: 75px;
+      animation: catBounce 2s ease-in-out infinite;
+      margin-bottom: 10px;
+    }
+
+    @keyframes catBounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    h1 {
+      font-size: 38px;
+      color: #d9a900;
+      margin-bottom: 12px;
+    }
+
+    .subtitle {
+      font-size: 17px;
+      line-height: 1.6;
+      color: #806a32;
+      margin-bottom: 28px;
+    }
+
+    /* Flower button */
+    .enter-btn {
+      border: none;
+      background: #ffd83d;
+      color: #6b5110;
+
+      padding: 14px 30px;
+      border-radius: 50px;
+
+      font-size: 18px;
+      font-weight: bold;
+
+      cursor: pointer;
+
+      box-shadow: 0 8px 20px rgba(220, 175, 30, 0.3);
+
+      transition: .3s ease;
+    }
+
+    .enter-btn:hover {
+      transform: translateY(-4px) scale(1.05);
+      background: #ffe36b;
+      box-shadow: 0 12px 25px rgba(220, 175, 30, 0.4);
+    }
+
+    .enter-btn:active {
+      transform: scale(.95);
+    }
+
+    .tiny {
+      margin-top: 18px;
+      font-size: 13px;
+      color: #a18b55;
+    }
+
+    /* Screen transition */
+    .fade-out {
+      animation: fadeOut .8s forwards;
+    }
+
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+        transform: scale(1.05);
+      }
+    }
+
+    /* Mobile */
+    @media (max-width: 500px) {
+      h1 {
+        font-size: 32px;
+      }
+
+      .card {
+        padding: 38px 20px;
+      }
+
+      .cat {
+        font-size: 65px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Floating flowers -->
+  <div class="flower f1">🌼</div>
+  <div class="flower f2">🌼</div>
+  <div class="flower f3">🌻</div>
+  <div class="flower f4">🌼</div>
+
+  <!-- Floating hearts -->
+  <div class="heart h1">💛</div>
+  <div class="heart h2">♡</div>
+  <div class="heart h3">💛</div>
+  <div class="heart h4">♡</div>
+
+  <!-- Sparkles -->
+  <div class="sparkle s1">✦</div>
+  <div class="sparkle s2">✧</div>
+  <div class="sparkle s3">✦</div>
+
+  <!-- Main -->
+  <div class="card" id="mainCard">
+
+    <div class="cat">🐱</div>
+
+    <h1>Welcome, Dada~ 🌼</h1>
+
+    <p class="subtitle">
+      I made a tiny little world<br>
+      just for you... 💛
+    </p>
+
+    <button class="enter-btn" onclick="enterWorld()">
+      🌼 Enter our little world 🌼
+    </button>
+
+    <p class="tiny">
+      made with a little bit of love & lots of silliness 🐱💛
+    </p>
+
+  </div>
+
+  <script>
+    function enterWorld() {
+
+      const card = document.getElementById("mainCard");
+
+      card.classList.add("fade-out");
+
+      setTimeout(function() {
+        window.location.href = "page2.html";
+      }, 800);
+    }
+  </script>
+
+</body>
+  </html>
