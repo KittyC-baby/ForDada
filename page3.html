@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Our Little Memories 🌌</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at 20% 20%, #21154d 0%, transparent 25%),
+        radial-gradient(circle at 80% 70%, #30104d 0%, transparent 25%),
+        radial-gradient(circle at 50% 50%, #09091d 0%, #020207 75%);
+      color: white;
+      font-family: "Trebuchet MS", sans-serif;
+      position: relative;
+    }
+
+    /* =========================
+       STARS
+    ========================= */
+
+    .stars {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .star {
+      position: absolute;
+      color: white;
+      animation: twinkle 2s infinite ease-in-out;
+    }
+
+    .star:nth-child(1)  { top: 8%; left: 8%; font-size: 12px; }
+    .star:nth-child(2)  { top: 15%; left: 30%; font-size: 7px; animation-delay: .5s; }
+    .star:nth-child(3)  { top: 10%; right: 12%; font-size: 15px; animation-delay: 1s; }
+    .star:nth-child(4)  { top: 30%; right: 6%; font-size: 8px; animation-delay: .3s; }
+    .star:nth-child(5)  { top: 42%; left: 5%; font-size: 13px; animation-delay: 1.2s; }
+    .star:nth-child(6)  { top: 55%; right: 10%; font-size: 10px; animation-delay: .7s; }
+    .star:nth-child(7)  { top: 72%; left: 12%; font-size: 8px; animation-delay: 1.5s; }
+    .star:nth-child(8)  { top: 84%; right: 20%; font-size: 14px; animation-delay: .4s; }
+    .star:nth-child(9)  { top: 65%; left: 45%; font-size: 7px; animation-delay: 1.1s; }
+    .star:nth-child(10) { top: 92%; left: 70%; font-size: 11px; animation-delay: .8s; }
+    .star:nth-child(11) { top: 25%; left: 50%; font-size: 9px; animation-delay: 1.4s; }
+    .star:nth-child(12) { top: 48%; right: 35%; font-size: 12px; animation-delay: .2s; }
+
+    @keyframes twinkle {
+      0%, 100% {
+        opacity: .3;
+        transform: scale(.8);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.4);
+      }
+    }
+
+    /* =========================
+       PLANETS
+    ========================= */
+
+    .planet {
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      opacity: .75;
+      z-index: 0;
+    }
+
+    .planet.one {
+      width: 55px;
+      height: 55px;
+      top: 12%;
+      right: 8%;
+      background: radial-gradient(circle at 30% 30%, #ffe89a, #c77cff, #45216e);
+      box-shadow: 0 0 25px #b57aff;
+    }
+
+    .planet.two {
+      width: 38px;
+      height: 38px;
+      bottom: 14%;
+      left: 8%;
+      background: radial-gradient(circle at 30% 30%, #9be8ff, #4b65d9, #17173d);
+      box-shadow: 0 0 20px #596cff;
+    }
+
+    .planet.three {
+      width: 28px;
+      height: 28px;
+      top: 43%;
+      left: 4%;
+      background: radial-gradient(circle at 30% 30%, #ffb2d9, #b14e99);
+      box-shadow: 0 0 18px #ff72c6;
+    }
+
+    /* =========================
+       MAIN PAGE
+    ========================= */
+
+    .page {
+      position: relative;
+      z-index: 2;
+      min-height: 100vh;
+      width: 100%;
+      padding: 40px 15px 80px;
+      text-align: center;
+    }
+
+    .title {
+      font-size: 30px;
+      color: #ffd96a;
+      text-shadow: 0 0 15px #ffcb3d;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: #f4e9bd;
+      font-size: 15px;
+      opacity: .9;
+    }
+
+    /* =========================
+       FIRST MEMORY SECTION
+    ========================= */
+
+    .memory-section {
+      margin: 55px auto 90px;
+      width: 100%;
+      max-width: 600px;
+      position: relative;
+    }
+
+    .caption {
+      font-size: 24px;
+      color: #ffd866;
+      text-shadow: 0 0 12px #ffbf30;
+      margin-bottom: 12px;
+      opacity: 0;
+      transform: translateY(15px);
+      transition: .7s ease;
+    }
+
+    .message {
+      font-size: 19px;
+      color: #fff4d0;
+      margin-bottom: 25px;
+      opacity: 0;
+      transform: translateY(15px);
+      transition: .7s ease .2s;
+    }
+
+    .show .caption,
+    .show .message {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =========================
+       MEMORY PLANT
+    ========================= */
+
+    .plant-area {
+      width: 300px;
+      height: 300px;
+      margin: auto;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .glow {
+      position: absolute;
+      width: 180px;
+      height: 55px;
+      background: #ffd43d;
+      filter: blur(35px);
+      opacity: .3;
+      left: 60px;
+      bottom: 30px;
+    }
+
+    .island {
+      position: absolute;
+      width: 190px;
+      height: 70px;
+      background: linear-gradient(#5c432b, #23150e);
+      border-radius: 50%;
+      left: 55px;
+      bottom: 20px;
+      box-shadow: 0 0 30px rgba(255, 210, 70, .25);
+    }
+
+    .stem {
+      position: absolute;
+      width: 12px;
+      height: 150px;
+      background: linear-gradient(to right, #4e9e47, #b6e76a);
+      border-radius: 20px;
+      left: 144px;
+      bottom: 70px;
+      transform: rotate(-3deg);
+      box-shadow: 0 0 12px rgba(139, 255, 91, .5);
+    }
+
+    .leaf {
+      position: absolute;
+      width: 70px;
+      height: 38px;
+      background: linear-gradient(135deg, #b8ee70, #4b9b42);
+      border-radius: 100% 0 100% 0;
+      box-shadow: 0 0 15px rgba(126, 255, 98, .4);
+    }
+
+    .leaf.left {
+      left: 88px;
+      bottom: 150px;
+      transform: rotate(-25deg);
+    }
+
+    .leaf.right {
+      left: 150px;
+      bottom: 185px;
+      transform: rotate(25deg);
+    }
+
+    .flower {
+      position: absolute;
+      left: 125px;
+      bottom: 200px;
+      font-size: 45px;
+      filter: drop-shadow(0 0 12px #ffe16b);
+      animation: flowerFloat 2.5s ease-in-out infinite;
+    }
+
+    @keyframes flowerFloat {
+      0%, 100% {
+        transform: translateY(0) rotate(-3deg);
+      }
+
+      50% {
+        transform: translateY(-8px) rotate(3deg);
+      }
+    }
+
+    .touch {
+      margin-top: -5px;
+      color: #f8dd79;
+      font-size: 14px;
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        opacity: .5;
+      }
+
+      50% {
+        opacity: 1;
+      }
+    }
+
+    /* =========================
+       ORBITING PHOTOS
+    ========================= */
+
+    .orbit {
+      position: absolute;
+      width: 330px;
+      height: 210px;
+      left: -15px;
+      top: 30px;
+      border: 1px solid rgba(255, 219, 101, .35);
+      border-radius: 50%;
+      animation: orbitSpin 14s linear infinite;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    .show .orbit {
+      opacity: 1;
+    }
+
+    @keyframes orbitSpin {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .memory-photo {
+      position: absolute;
+      width: 75px;
+      height: 75px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #ffe17a;
+      box-shadow:
+        0 0 12px #ffd43d,
+        0 0 30px rgba(255, 214, 78, .4);
+    }
+
+    .photo1 {
+      top: -37px;
+      left: 125px;
+    }
+
+    .photo2 {
+      bottom: -37px;
+      left: 35px;
+    }
+
+    .photo3 {
+      bottom: -37px;
+      right: 35px;
+    }
+
+    /* =========================
+       SECOND GIFT SECTION
+    ========================= */
+
+    .gift-section {
+      margin: 20px auto;
+      max-width: 500px;
+      opacity: 1;
+    }
+
+    .gift-title {
+      font-size: 24px;
+      color: #ff9dcc;
+      text-shadow: 0 0 14px #ff64b6;
+      margin-bottom: 25px;
+    }
+
+    .gift-message {
+      color: #ffe4f2;
+      font-size: 19px;
+      margin-bottom: 20px;
+    }
+
+    .gift-plant {
+      width: 260px;
+      height: 250px;
+      margin: auto;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .gift-island {
+      position: absolute;
+      width: 175px;
+      height: 65px;
+      left: 42px;
+      bottom: 20px;
+      background: linear-gradient(#39283c, #17101b);
+      border-radius: 50%;
+      box-shadow: 0 0 30px rgba(255, 91, 190, .3);
+    }
+
+    .gift-stem {
+      position: absolute;
+      width: 10px;
+      height: 135px;
+      background: linear-gradient(#ff9bcf, #a65cff);
+      border-radius: 20px;
+      left: 126px;
+      bottom: 65px;
+      transform: rotate(2deg);
+      box-shadow: 0 0 15px #e36cff;
+    }
+
+    .heart-leaf {
+      position: absolute;
+      width: 58px;
+      height: 58px;
+      background: linear-gradient(135deg, #ffb7dc, #c461ff);
+      transform: rotate(45deg);
+      border-radius: 50% 0 50% 0;
+      box-shadow: 0 0 20px #ff7dd1;
+    }
+
+    .heart-leaf.left {
+      left: 82px;
+      bottom: 145px;
+    }
+
+    .heart-leaf.right {
+      left: 130px;
+      bottom: 165px;
+    }
+
+    .gift-flower {
+      position: absolute;
+      left: 108px;
+      bottom: 175px;
+      font-size: 45px;
+      filter: drop-shadow(0 0 14px #ff83d2);
+    }
+
+    /* =========================
+       REVEAL
+    ========================= */
+
+    .reveal {
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle, rgba(89, 26, 83, .97), rgba(2, 2, 10, .99));
+      z-index: 20;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 25px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 1s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .gift-card {
+      width: 100%;
+      max-width: 380px;
+      padding: 25px;
+      border-radius: 30px;
+      border: 2px solid rgba(255, 159, 216, .7);
+      background: rgba(45, 14, 45, .85);
+      box-shadow:
+        0 0 40px rgba(255, 96, 199, .35),
+        inset 0 0 30px rgba(255, 150, 220, .08);
+      text-align: center;
+      transform: scale(.8);
+      transition: transform 1s ease;
+    }
+
+    .reveal.active .gift-card {
+      transform: scale(1);
+    }
+
+    .gift-card h2 {
+      color: #ffb9e2;
+      font-size: 30px;
+      margin-bottom: 18px;
+      text-shadow: 0 0 15px #ff65bb;
+    }
+
+    .my-photo {
+      width: 220px;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 25px;
+      border: 3px solid #ffb2df;
+      box-shadow: 0 0 30px rgba(255, 112, 201, .5);
+      opacity: 0;
+      transform: scale(.85);
+      animation: photoReveal 1.5s ease forwards;
+      animation-delay: .5s;
+    }
+
+    @keyframes photoReveal {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .me-text {
+      margin-top: 18px;
+      font-size: 24px;
+      color: #ffd6ed;
+    }
+
+    .next-btn {
+      margin-top: 25px;
+      border: none;
+      padding: 13px 28px;
+      border-radius: 30px;
+      background: #ff9fd8;
+      color: #531d45;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(255, 121, 198, .4);
+      transition: .3s ease;
+    }
+
+    .next-btn:hover {
+      transform: scale(1.06);
+      background: #ffc1e7;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 500px) {
+
+      .page {
+        padding-top: 30px;
+      }
+
+      .title {
+        font-size: 25px;
+      }
+
+      .memory-section {
+        margin-top: 45px;
+      }
+
+      .orbit {
+        width: 300px;
+        left: 0;
+      }
+
+      .plant-area {
+        transform: scale(.9);
+      }
+
+      .my-photo {
+        width: 190px;
+        height: 250px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       BACKGROUND
+  ========================= -->
+
+  <div class="stars">
+    <span class="star">✦</span>
+    <span class="star">✧</span>
+    <span class="star">✦</span>
+    <span class="star">·</span>
+    <span class="star">✧</span>
+    <span class="star">✦</span>
+    <span class="star">·</span>
+    <span class="star">✧</span>
+    <span class="star">✦</span>
+    <span class="star">·</span>
+    <span class="star">✧</span>
+    <span class="star">✦</span>
+  </div>
+
+  <div class="planet one"></div>
+  <div class="planet two"></div>
+  <div class="planet three"></div>
+
+
+  <!-- =========================
+       MAIN PAGE
+  ========================= -->
+
+  <main class="page">
+
+    <h1 class="title">A Little Piece of Our Universe 🌌</h1>
+
+    <p class="subtitle">
+      Some memories deserve their own little galaxy... 💛
+    </p>
+
+
+    <!-- FIRST PLANT -->
+
+    <section class="memory-section" id="memorySection">
+
+      <h2 class="caption">
+        my favourite memories 🌼
+      </h2>
+
+      <p class="message">
+        Being with you dada..
+      </p>
+
+
+      <div class="plant-area" onclick="showMemories()">
+
+        <div class="glow"></div>
+
+        <div class="island"></div>
+
+        <div class="stem"></div>
+
+        <div class="leaf left"></div>
+        <div class="leaf right"></div>
+
+        <div class="flower">🌼</div>
+
+
+        <!-- Orbit -->
+
+        <div class="orbit">
+
+          <img src="photo1.jpg"
+               class="memory-photo photo1"
+               alt="Memory 1">
+
+          <img src="photo2.jpg"
+               class="memory-photo photo2"
+               alt="Memory 2">
+
+          <img src="photo3.jpg"
+               class="memory-photo photo3"
+               alt="Memory 3">
+
+        </div>
+
+      </div>
+
+      <p class="touch">
+        ✦ touch the plant ✦
+      </p>
+
+    </section>
+
+
+    <!-- SECOND PLANT -->
+
+    <section class="gift-section">
+
+      <h2 class="gift-title">
+        This is your gift 🎁
+      </h2>
+
+      <p class="gift-message">
+        Something tiny... but made just for you. 💛
+      </p>
+
+
+      <div class="gift-plant" onclick="openGift()">
+
+        <div class="gift-island"></div>
+
+        <div class="gift-stem"></div>
+
+        <div class="heart-leaf left"></div>
+        <div class="heart-leaf right"></div>
+
+        <div class="gift-flower">💗</div>
+
+      </div>
+
+      <p class="touch">
+        ✦ touch the plant ✦
+      </p>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       GIFT REVEAL
+  ========================= -->
+
+  <div class="reveal" id="reveal">
+
+    <div class="gift-card">
+
+      <h2>Meee</h2>
+
+      <img
+        src="me.jpg"
+        class="my-photo"
+        alt="My RP self"
+      >
+
+      <p class="me-text">
+        Meee (⁠づ⁠≧⁠▽⁠≦⁠)⁠づ
+      </p>
+
+      <button class="next-btn" onclick="nextPage()">
+        Next 🌼
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <script>
+
+    /* =========================
+       FIRST PLANT
+    ========================= */
+
+    function showMemories() {
+
+      document
+        .getElementById("memorySection")
+        .classList.add("show");
+
+    }
+
+
+    /* =========================
+       SECOND PLANT
+    ========================= */
+
+    function openGift() {
+
+      document
+        .getElementById("reveal")
+        .classList.add("active");
+
+    }
+
+
+    /* =========================
+       NEXT BUTTON
+    ========================= */
+
+    function nextPage() {
+
+      window.location.href = "page4.html";
+
+    }
+
+  </script>
+
+</body>
+  </html>
