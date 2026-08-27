@@ -1,397 +1,1052 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>For My Dada 💛</title>
+  <title>For My Dada 🌼</title>
 
-<style>
+  <style>
+
     * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden;
-        font-family: "Georgia", serif;
-        background:
-            radial-gradient(circle at 20% 20%, rgba(255, 225, 150, 0.18), transparent 25%),
-            radial-gradient(circle at 80% 80%, rgba(255, 180, 210, 0.15), transparent 30%),
-            linear-gradient(135deg, #120d1c, #211426, #0d1520);
-        color: white;
+      min-height: 100vh;
+      overflow-x: hidden;
+
+      font-family: "Trebuchet MS", sans-serif;
+
+      color: white;
+
+      background:
+        radial-gradient(circle at 50% 45%, #17132f 0%, transparent 38%),
+        linear-gradient(135deg, #020207, #080714, #100817);
+
+      transition:
+        background 2s ease;
     }
 
-    /* Soft stars */
+
+    /* =========================
+       STARS
+    ========================= */
+
     .stars {
-        position: fixed;
-        inset: 0;
-        pointer-events: none;
+      position: fixed;
+      inset: 0;
+
+      pointer-events: none;
+
+      z-index: 0;
     }
 
     .star {
-        position: absolute;
-        width: 3px;
-        height: 3px;
-        background: white;
-        border-radius: 50%;
-        opacity: 0.6;
-        animation: twinkle 3s infinite ease-in-out;
+      position: absolute;
+
+      color: #fff2a3;
+
+      opacity: .35;
+
+      animation:
+        twinkle 3s infinite ease-in-out;
     }
 
-    .star:nth-child(1) { top: 12%; left: 15%; animation-delay: .2s; }
-    .star:nth-child(2) { top: 25%; left: 80%; animation-delay: 1s; }
-    .star:nth-child(3) { top: 70%; left: 12%; animation-delay: 1.7s; }
-    .star:nth-child(4) { top: 82%; left: 75%; animation-delay: .8s; }
-    .star:nth-child(5) { top: 45%; left: 90%; animation-delay: 2s; }
-    .star:nth-child(6) { top: 10%; left: 55%; animation-delay: 1.3s; }
-    .star:nth-child(7) { top: 60%; left: 50%; animation-delay: .5s; }
-    .star:nth-child(8) { top: 35%; left: 30%; animation-delay: 2.2s; }
+    .s1 {
+      top: 8%;
+      left: 8%;
+    }
+
+    .s2 {
+      top: 15%;
+      left: 25%;
+      animation-delay: .5s;
+    }
+
+    .s3 {
+      top: 9%;
+      right: 12%;
+      animation-delay: 1s;
+    }
+
+    .s4 {
+      top: 28%;
+      right: 7%;
+      animation-delay: .3s;
+    }
+
+    .s5 {
+      top: 45%;
+      left: 6%;
+      animation-delay: 1.2s;
+    }
+
+    .s6 {
+      top: 60%;
+      right: 10%;
+      animation-delay: .7s;
+    }
+
+    .s7 {
+      bottom: 15%;
+      left: 12%;
+      animation-delay: 1.5s;
+    }
+
+    .s8 {
+      bottom: 8%;
+      right: 20%;
+      animation-delay: .4s;
+    }
+
+    .s9 {
+      top: 72%;
+      left: 43%;
+      animation-delay: 1.1s;
+    }
+
+    .s10 {
+      top: 22%;
+      left: 56%;
+      animation-delay: .8s;
+    }
+
+    .s11 {
+      bottom: 30%;
+      right: 35%;
+      animation-delay: 1.4s;
+    }
+
+    .s12 {
+      bottom: 11%;
+      left: 70%;
+      animation-delay: .2s;
+    }
+
 
     @keyframes twinkle {
-        0%, 100% {
-            opacity: .25;
-            transform: scale(.7);
-        }
-        50% {
-            opacity: 1;
-            transform: scale(1.4);
-        }
+
+      0%, 100% {
+        opacity: .2;
+        transform: scale(.7);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.4);
+      }
+
     }
 
-    /* Floating hearts */
-    .heart {
-        position: fixed;
-        bottom: -30px;
-        font-size: 18px;
+
+    /* =========================
+       MAIN
+    ========================= */
+
+    .page {
+
+      min-height: 100vh;
+
+      display: flex;
+
+      justify-content: center;
+
+      align-items: center;
+
+      padding: 35px 15px;
+
+      position: relative;
+
+      z-index: 2;
+    }
+
+
+    .container {
+
+      width: 100%;
+
+      max-width: 520px;
+
+      text-align: center;
+    }
+
+
+    /* =========================
+       INTRO
+    ========================= */
+
+    .intro {
+
+      animation:
+        fadeIn 1.5s ease;
+    }
+
+
+    .small-flower {
+
+      font-size: 58px;
+
+      display: block;
+
+      margin-bottom: 20px;
+
+      cursor: pointer;
+
+      animation:
+        flowerGlow 2.5s infinite ease-in-out;
+
+      transition: .5s ease;
+    }
+
+
+    .small-flower:hover {
+
+      transform:
+        scale(1.15)
+        rotate(5deg);
+    }
+
+
+    @keyframes flowerGlow {
+
+      0%, 100% {
+
+        filter:
+          drop-shadow(
+            0 0 8px rgba(255, 214, 65, .35)
+          );
+
+      }
+
+      50% {
+
+        filter:
+          drop-shadow(
+            0 0 30px rgba(255, 220, 90, .8)
+          );
+
+      }
+
+    }
+
+
+    .intro-title {
+
+      color: #ffe16b;
+
+      font-size: 30px;
+
+      text-shadow:
+        0 0 18px rgba(255, 219, 92, .5);
+
+      margin-bottom: 12px;
+    }
+
+
+    .intro-text {
+
+      color: #c7c4d0;
+
+      font-size: 15px;
+
+      line-height: 1.7;
+    }
+
+
+    /* =========================
+       REVEAL AREA
+    ========================= */
+
+    .reveal {
+
+      display: none;
+
+      animation:
+        revealAppear 1.5s ease;
+
+      margin-top: 30px;
+    }
+
+
+    @keyframes revealAppear {
+
+      from {
+
         opacity: 0;
-        animation: floatUp 8s linear infinite;
-        pointer-events: none;
+
+        transform:
+          scale(.92)
+          translateY(20px);
+      }
+
+      to {
+
+        opacity: 1;
+
+        transform:
+          scale(1)
+          translateY(0);
+      }
+
     }
 
-    .heart:nth-child(1) { left: 10%; animation-delay: 1s; }
-    .heart:nth-child(2) { left: 30%; animation-delay: 4s; }
-    .heart:nth-child(3) { left: 55%; animation-delay: 2s; }
-    .heart:nth-child(4) { left: 78%; animation-delay: 5s; }
-    .heart:nth-child(5) { left: 90%; animation-delay: 7s; }
 
-    @keyframes floatUp {
-        0% {
-            transform: translateY(0) scale(.8);
-            opacity: 0;
-        }
+    /* =========================
+       PHOTO
+    ========================= */
 
-        15% {
-            opacity: .7;
-        }
+    .photo-frame {
 
-        80% {
-            opacity: .5;
-        }
+      position: relative;
 
-        100% {
-            transform: translateY(-110vh) scale(1.3) rotate(20deg);
-            opacity: 0;
-        }
+      width: 210px;
+
+      height: 210px;
+
+      margin: 0 auto 25px;
+
+      border-radius: 50%;
+
+      padding: 6px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #ffe873,
+          #fff5bd,
+          #d6a927,
+          #ffe873
+        );
+
+      box-shadow:
+        0 0 35px rgba(255, 217, 77, .35);
+
+      animation:
+        photoGlow 3s infinite ease-in-out;
     }
 
-    /* Main card */
-    .card {
-        width: min(90%, 620px);
-        min-height: 500px;
-        padding: 55px 35px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
 
-        background: rgba(255,255,255,.07);
-        border: 1px solid rgba(255,255,255,.16);
-        border-radius: 30px;
+    .photo-frame::before {
 
-        backdrop-filter: blur(15px);
-        -webkit-backdrop-filter: blur(15px);
+      content: "✦";
+
+      position: absolute;
+
+      top: -18px;
+
+      left: 15px;
+
+      color: #ffe66c;
+
+      font-size: 24px;
+    }
+
+
+    .photo-frame::after {
+
+      content: "✦";
+
+      position: absolute;
+
+      bottom: -10px;
+
+      right: 12px;
+
+      color: #ffe66c;
+
+      font-size: 20px;
+    }
+
+
+    .photo-frame img {
+
+      width: 100%;
+
+      height: 100%;
+
+      object-fit: cover;
+
+      border-radius: 50%;
+
+      display: block;
+
+      border: 3px solid #17131e;
+    }
+
+
+    @keyframes photoGlow {
+
+      0%, 100% {
 
         box-shadow:
-            0 20px 70px rgba(0,0,0,.45),
-            inset 0 0 30px rgba(255,255,255,.03);
+          0 0 25px rgba(255, 217, 77, .25);
 
-        animation: cardAppear 1.5s ease;
+      }
+
+      50% {
+
+        box-shadow:
+          0 0 50px rgba(255, 217, 77, .55);
+
+      }
+
     }
 
-    @keyframes cardAppear {
-        from {
-            opacity: 0;
-            transform: translateY(30px) scale(.96);
-        }
 
-        to {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
-    }
-
-    .kitty {
-        font-size: 55px;
-        margin-bottom: 25px;
-        animation: gentleFloat 3s ease-in-out infinite;
-    }
-
-    @keyframes gentleFloat {
-        0%, 100% {
-            transform: translateY(0);
-        }
-
-        50% {
-            transform: translateY(-8px);
-        }
-    }
-
-    .text {
-        min-height: 190px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
+    /* =========================
+       TEXT REVEALS
+    ========================= */
 
     .line {
-        opacity: 0;
-        transform: translateY(12px);
-        transition:
-            opacity 1.2s ease,
-            transform 1.2s ease;
-        margin: 9px 0;
-        line-height: 1.7;
+
+      opacity: 0;
+
+      transform:
+        translateY(15px);
+
+      transition:
+        opacity 1s ease,
+        transform 1s ease;
+
+      color: #fff1b0;
+
+      font-size: 17px;
+
+      line-height: 1.8;
+
+      margin-top: 18px;
     }
+
 
     .line.show {
-        opacity: 1;
-        transform: translateY(0);
+
+      opacity: 1;
+
+      transform:
+        translateY(0);
     }
 
-    .line.first {
-        font-size: 25px;
-        color: #ffe8a8;
+
+    .main-line {
+
+      color: #ffd95b;
+
+      font-size: 22px;
+
+      font-weight: bold;
+
+      text-shadow:
+        0 0 15px rgba(255, 218, 80, .45);
     }
 
-    .line.second {
-        font-size: 25px;
-        color: #ffd6e8;
+
+    /* =========================
+       HEARTS
+    ========================= */
+
+    .heart {
+
+      position: fixed;
+
+      pointer-events: none;
+
+      opacity: 0;
+
+      font-size: 20px;
+
+      z-index: 20;
     }
 
-    .line.third {
-        margin-top: 25px;
-        font-size: 22px;
-        color: #fff5c7;
-        font-style: italic;
+
+    .heart.active {
+
+      animation:
+        floatHeart 3s ease forwards;
     }
 
-    .signature {
-        margin-top: 20px;
-        font-size: 20px;
-        color: #ffd1e6;
+
+    @keyframes floatHeart {
+
+      0% {
+
         opacity: 0;
-        transform: translateY(10px);
-        transition: 1.3s ease;
-    }
 
-    .signature.show {
+        transform:
+          translateY(30px)
+          scale(.5);
+      }
+
+      20% {
+
         opacity: 1;
-        transform: translateY(0);
-    }
+      }
 
-    .secret {
-        margin-top: 28px;
-        font-size: 19px;
-        color: #ffe6a6;
+      100% {
+
         opacity: 0;
-        transform: translateY(10px);
-        transition: 1.5s ease;
+
+        transform:
+          translateY(-180px)
+          scale(1.3);
+      }
+
     }
 
-    .secret.show {
+
+    /* =========================
+       FINAL MESSAGE
+    ========================= */
+
+    .final-message {
+
+      display: none;
+
+      margin-top: 35px;
+
+      padding: 28px 20px;
+
+      border-radius: 28px;
+
+      background:
+        rgba(255, 255, 255, .055);
+
+      border:
+        1px solid rgba(255, 220, 100, .2);
+
+      backdrop-filter: blur(12px);
+
+      animation:
+        finalAppear 1.2s ease;
+    }
+
+
+    @keyframes finalAppear {
+
+      from {
+
+        opacity: 0;
+
+        transform:
+          translateY(25px)
+          scale(.95);
+      }
+
+      to {
+
         opacity: 1;
-        transform: translateY(0);
+
+        transform:
+          translateY(0)
+          scale(1);
+      }
+
     }
 
-    /* Button */
+
+    .final-message h2 {
+
+      color: #ffe06a;
+
+      font-size: 23px;
+
+      margin-bottom: 15px;
+
+      text-shadow:
+        0 0 15px rgba(255, 220, 90, .45);
+    }
+
+
+    .final-message p {
+
+      color: #f7edc4;
+
+      font-size: 16px;
+
+      line-height: 1.8;
+    }
+
+
+    /* =========================
+       SECRET BUTTON
+    ========================= */
+
+    .secret-btn {
+
+      margin-top: 28px;
+
+      padding: 14px 27px;
+
+      border: none;
+
+      border-radius: 30px;
+
+      background: #ffd84d;
+
+      color: #594507;
+
+      font-family: inherit;
+
+      font-size: 15px;
+
+      font-weight: bold;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 8px 25px rgba(255, 210, 60, .25);
+
+      transition: .3s ease;
+    }
+
+
+    .secret-btn:hover {
+
+      transform:
+        scale(1.06);
+
+      background: #ffe991;
+    }
+
+
+    /* =========================
+       NEXT BUTTON
+    ========================= */
+
     .next-btn {
-        margin-top: 30px;
-        padding: 13px 28px;
 
-        border: 1px solid rgba(255,255,255,.25);
-        border-radius: 30px;
+      display: none;
 
-        background: rgba(255, 220, 150, .12);
-        color: #fff3cf;
+      margin-top: 20px;
 
-        font-size: 16px;
-        font-family: inherit;
+      padding: 13px 28px;
 
-        cursor: pointer;
+      border: none;
 
-        opacity: 0;
-        pointer-events: none;
+      border-radius: 30px;
 
-        transition:
-            opacity 1s ease,
-            transform .3s ease,
-            background .3s ease,
-            box-shadow .3s ease;
+      background:
+        rgba(255,255,255,.09);
+
+      color: #ffe477;
+
+      border:
+        1px solid rgba(255, 220, 100, .25);
+
+      font-family: inherit;
+
+      font-size: 15px;
+
+      cursor: pointer;
+
+      transition: .3s ease;
     }
 
-    .next-btn.show {
-        opacity: 1;
-        pointer-events: auto;
-    }
 
     .next-btn:hover {
-        transform: translateY(-3px);
-        background: rgba(255, 220, 150, .22);
-        box-shadow: 0 8px 25px rgba(255,210,150,.15);
+
+      background:
+        rgba(255, 220, 100, .15);
+
+      transform:
+        scale(1.05);
     }
 
-    .next-btn:active {
-        transform: scale(.96);
+
+    @keyframes fadeIn {
+
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+
     }
 
-    /* Mobile */
-    @media (max-width: 600px) {
-        .card {
-            min-height: 500px;
-            padding: 45px 24px;
-            border-radius: 25px;
-        }
 
-        .kitty {
-            font-size: 48px;
-        }
+    /* =========================
+       MOBILE
+    ========================= */
 
-        .line.first,
-        .line.second {
-            font-size: 21px;
-        }
+    @media (max-width: 500px) {
 
-        .line.third {
-            font-size: 19px;
-        }
+      .intro-title {
+        font-size: 27px;
+      }
 
-        .signature {
-            font-size: 18px;
-        }
+      .photo-frame {
+        width: 185px;
+        height: 185px;
+      }
 
-        .secret {
-            font-size: 17px;
-        }
+      .main-line {
+        font-size: 20px;
+      }
+
+      .line {
+        font-size: 15px;
+      }
+
+      .final-message p {
+        font-size: 15px;
+      }
+
     }
-</style>
+
+  </style>
 </head>
+
 
 <body>
 
-<div class="stars">
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-</div>
 
-<div class="heart">💛</div>
-<div class="heart">🌼</div>
-<div class="heart">💗</div>
-<div class="heart">✨</div>
-<div class="heart">💛</div>
+  <!-- =========================
+       STARS
+  ========================= -->
 
-<div class="card">
+  <div class="stars">
 
-    <div class="kitty">🐱🎀</div>
+    <span class="star s1">✦</span>
+    <span class="star s2">✧</span>
+    <span class="star s3">✦</span>
+    <span class="star s4">·</span>
+    <span class="star s5">✧</span>
+    <span class="star s6">✦</span>
+    <span class="star s7">·</span>
+    <span class="star s8">✧</span>
+    <span class="star s9">✦</span>
+    <span class="star s10">·</span>
+    <span class="star s11">✧</span>
+    <span class="star s12">✦</span>
 
-    <div class="text">
+  </div>
 
-        <div class="line first" id="line1">
-            “This whole little world...”
+
+  <!-- =========================
+       FLOATING HEARTS
+  ========================= -->
+
+  <span class="heart" id="heart1" style="left:12%; top:70%;">
+    💛
+  </span>
+
+  <span class="heart" id="heart2" style="left:30%; top:75%;">
+    ✨
+  </span>
+
+  <span class="heart" id="heart3" style="left:70%; top:70%;">
+    💗
+  </span>
+
+  <span class="heart" id="heart4" style="left:85%; top:75%;">
+    🌼
+  </span>
+
+
+  <!-- =========================
+       PAGE
+  ========================= -->
+
+  <main class="page">
+
+    <div class="container">
+
+
+      <!-- =========================
+           INTRO
+      ========================= -->
+
+      <section class="intro" id="intro">
+
+        <span
+          class="small-flower"
+          onclick="startReveal()"
+        >
+          🌼
+        </span>
+
+
+        <h1 class="intro-title">
+          Dada... there's one more thing. 💛
+        </h1>
+
+
+        <p class="intro-text">
+          I kept this little part hidden just for you... 🌌
+          <br>
+          Touch the flower. 🐱
+        </p>
+
+      </section>
+
+
+      <!-- =========================
+           REVEAL
+      ========================= -->
+
+      <section
+        class="reveal"
+        id="reveal"
+      >
+
+
+        <!-- PHOTO -->
+
+        <div class="photo-frame">
+
+          <img
+            src="photo4.jpg"
+            alt="Your little baby 🐱"
+          >
+
         </div>
 
-        <div class="line second" id="line2">
-            “...was made by your little baby. 🐱🎀”
+
+        <!-- FIRST LINE -->
+
+        <p
+          class="line main-line"
+          id="line1"
+        >
+          Hi Dadaaaa! 🐱🎀
+        </p>
+
+
+        <!-- SECOND LINE -->
+
+        <p
+          class="line"
+          id="line2"
+        >
+          This whole little world...
+        </p>
+
+
+        <!-- THIRD LINE -->
+
+        <p
+          class="line"
+          id="line3"
+        >
+          ...was made by your little baby. 🐱💗
+        </p>
+
+
+        <!-- SPECIAL LINE -->
+
+        <p
+          class="line main-line"
+          id="line4"
+        >
+          No matter where life takes us...<br>
+          you'll always be my Dada,<br>
+          and I'll always be your baby. 💛
+        </p>
+
+
+        <!-- FINAL BOX -->
+
+        <div
+          class="final-message"
+          id="finalMessage"
+        >
+
+          <h2>
+            For my Dada, with all my heart. 🌼
+          </h2>
+
+
+          <p>
+            Thank you for being a part of my little world. 🐱
+            <br>
+            I'll always be your tiny baby. 💗
+          </p>
+
+
+          <button
+            class="secret-btn"
+            onclick="openSecret()"
+          >
+            There's still one last secret... 👀💛
+          </button>
+
         </div>
 
-        <div class="line third" id="line3">
-            “No matter where life takes us...<br>
-            you'll always be my Dada,<br>
-            and I'll always be your baby. 💛”
-        </div>
+
+        <!-- NEXT -->
+
+        <button
+          class="next-btn"
+          id="nextButton"
+          onclick="nextPage()"
+        >
+          Open it → 💌
+        </button>
+
+
+      </section>
 
     </div>
 
-    <div class="signature" id="signature">
-        🌼 “For my Dada, with all my heart.” 🐱💗
-    </div>
-
-    <div class="secret" id="secret">
-        There’s still one last secret... 👀💛
-    </div>
-
-    <button class="next-btn" id="nextBtn" onclick="goNext()">
-        Open the last secret ✨
-    </button>
-
-</div>
-
-<script>
-
-    /*
-       The page reveals each part slowly,
-       giving the emotional lines their own little moment.
-    */
-
-    setTimeout(() => {
-        document.getElementById("line1").classList.add("show");
-    }, 1000);
-
-    setTimeout(() => {
-        document.getElementById("line2").classList.add("show");
-    }, 3000);
-
-    setTimeout(() => {
-        document.getElementById("line3").classList.add("show");
-    }, 5500);
-
-    setTimeout(() => {
-        document.getElementById("signature").classList.add("show");
-    }, 8500);
-
-    setTimeout(() => {
-        document.getElementById("secret").classList.add("show");
-    }, 10500);
-
-    setTimeout(() => {
-        document.getElementById("nextBtn").classList.add("show");
-    }, 12000);
+  </main>
 
 
-    function goNext() {
+  <script>
 
-        document.body.style.transition = "1s ease";
-        document.body.style.opacity = "0";
 
-        setTimeout(() => {
-            window.location.href = "page9.html";
-        }, 1000);
+    /* =========================
+       START REVEAL
+    ========================= */
+
+    function startReveal() {
+
+      const intro =
+        document.getElementById("intro");
+
+      const reveal =
+        document.getElementById("reveal");
+
+
+      intro.style.display = "none";
+
+      reveal.style.display = "block";
+
+
+      document.body.style.background =
+        "radial-gradient(circle at 50% 45%, #3a2855 0%, #100b1d 48%, #050308 100%)";
+
+
+      setTimeout(function() {
+
+        document
+          .getElementById("line1")
+          .classList.add("show");
+
+      }, 700);
+
+
+      setTimeout(function() {
+
+        document
+          .getElementById("line2")
+          .classList.add("show");
+
+      }, 1700);
+
+
+      setTimeout(function() {
+
+        document
+          .getElementById("line3")
+          .classList.add("show");
+
+      }, 2700);
+
+
+      setTimeout(function() {
+
+        document
+          .getElementById("line4")
+          .classList.add("show");
+
+        createHearts();
+
+      }, 3900);
+
+
+      setTimeout(function() {
+
+        document
+          .getElementById("finalMessage")
+          .style.display = "block";
+
+      }, 5400);
+
     }
 
-</script>
+
+    /* =========================
+       FLOATING HEARTS
+    ========================= */
+
+    function createHearts() {
+
+      const hearts =
+        document.querySelectorAll(".heart");
+
+
+      hearts.forEach(function(heart, index) {
+
+        setTimeout(function() {
+
+          heart.classList.add("active");
+
+        }, index * 300);
+
+      });
+
+    }
+
+
+    /* =========================
+       SECRET
+    ========================= */
+
+    function openSecret() {
+
+      const button =
+        document.querySelector(".secret-btn");
+
+      const next =
+        document.getElementById("nextButton");
+
+
+      button.innerHTML =
+        "You found it! 🐱💛";
+
+
+      button.disabled = true;
+
+
+      button.style.opacity = ".7";
+
+
+      next.style.display =
+        "inline-block";
+
+
+      createHearts();
+
+
+      next.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+
+    }
+
+
+    /* =========================
+       NEXT PAGE
+    ========================= */
+
+    function nextPage() {
+
+      window.location.href =
+        "page9.html";
+
+    }
+
+
+  </script>
 
 </body>
 </html>
