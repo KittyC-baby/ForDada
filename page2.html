@@ -181,6 +181,52 @@
       letter-spacing: 5px;
     }
 
+    /* =========================
+       NEXT BUTTON
+    ========================= */
+
+    .next-button {
+      display: inline-block;
+
+      margin-top: 25px;
+
+      padding: 13px 30px;
+
+      border: none;
+
+      border-radius: 30px;
+
+      background: #d3a500;
+
+      color: white;
+
+      font-family: "Trebuchet MS", sans-serif;
+
+      font-size: 16px;
+
+      font-weight: bold;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 7px 18px rgba(190, 150, 20, 0.25);
+
+      transition: .3s ease;
+    }
+
+    .next-button:hover {
+      transform: translateY(-3px) scale(1.04);
+
+      background: #e2b51b;
+
+      box-shadow:
+        0 10px 22px rgba(190, 150, 20, 0.3);
+    }
+
+    .next-button:active {
+      transform: scale(.96);
+    }
+
     /* Mobile */
 
     @media (max-width: 500px) {
@@ -274,6 +320,16 @@
     <div class="flower-line">
       🌼 ✦ 🌼 ✦ 🌼
     </div>
+
+
+    <!-- NEXT BUTTON -->
+
+    <button
+      class="next-button"
+      onclick="window.location.href='page3.html'"
+    >
+      Next → 🌼
+    </button>
 
   </div>
 
