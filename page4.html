@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>How Well Do You Know Me? 🌼</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "Trebuchet MS", sans-serif;
+
+      background:
+        radial-gradient(circle at 15% 15%, #fff3a8 0%, transparent 22%),
+        radial-gradient(circle at 85% 80%, #ffe0ee 0%, transparent 22%),
+        linear-gradient(135deg, #fffdf2, #fff5bd, #fff9e0);
+
+      color: #68551e;
+      padding: 25px 15px;
+    }
+
+    .page {
+      max-width: 560px;
+      margin: auto;
+      text-align: center;
+    }
+
+    /* FLOWER */
+
+    .top-flower {
+      font-size: 52px;
+      animation: float 2.5s ease-in-out infinite;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      color: #d09e00;
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .intro {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #806d38;
+      margin-bottom: 30px;
+    }
+
+    /* QUESTION CARD */
+
+    .question {
+      background: rgba(255, 255, 255, 0.84);
+      border: 2px solid rgba(230, 193, 55, 0.35);
+      border-radius: 25px;
+
+      padding: 23px 18px;
+      margin: 20px 0;
+
+      box-shadow:
+        0 10px 25px rgba(180, 145, 30, 0.13);
+
+      animation: appear .6s ease;
+    }
+
+    .question h2 {
+      font-size: 18px;
+      color: #bd9000;
+      margin-bottom: 17px;
+      line-height: 1.4;
+    }
+
+    /* ANSWER BUTTON */
+
+    .answer {
+      width: 100%;
+      border: none;
+
+      background: #fff6c9;
+      color: #705b1d;
+
+      padding: 13px 10px;
+      margin: 6px 0;
+
+      border-radius: 18px;
+
+      font-family: inherit;
+      font-size: 15px;
+
+      cursor: pointer;
+
+      transition: .25s ease;
+    }
+
+    .answer:hover {
+      transform: translateY(-2px);
+      background: #ffe993;
+    }
+
+    .answer.selected {
+      background: #ffd84d;
+      color: #5b4605;
+
+      font-weight: bold;
+
+      box-shadow:
+        0 5px 15px rgba(220, 175, 30, .25);
+
+      transform: scale(1.02);
+    }
+
+    /* FINISH BUTTON */
+
+    .finish-btn,
+    .next-btn {
+      border: none;
+
+      background: #ffd83d;
+      color: #614b0b;
+
+      padding: 14px 28px;
+
+      border-radius: 30px;
+
+      font-family: inherit;
+      font-size: 17px;
+      font-weight: bold;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 8px 20px rgba(210, 165, 25, .25);
+
+      transition: .3s ease;
+    }
+
+    .finish-btn:hover,
+    .next-btn:hover {
+      transform: scale(1.06);
+      background: #ffe67b;
+    }
+
+    /* RESULT */
+
+    .result {
+      display: none;
+
+      margin-top: 35px;
+
+      background: rgba(255, 255, 255, .92);
+
+      border-radius: 30px;
+
+      padding: 32px 20px;
+
+      border: 2px solid #efd05b;
+
+      box-shadow:
+        0 12px 35px rgba(185, 145, 30, .2);
+
+      animation: appear .8s ease;
+    }
+
+    .result-flower {
+      font-size: 45px;
+      margin-bottom: 10px;
+    }
+
+    .result h2 {
+      color: #d09e00;
+      font-size: 27px;
+      margin-bottom: 15px;
+    }
+
+    .result p {
+      line-height: 1.7;
+      font-size: 16px;
+      color: #776333;
+    }
+
+    .score {
+      display: block;
+
+      margin-top: 15px;
+
+      font-size: 20px;
+
+      color: #c49300;
+    }
+
+    .next-btn {
+      margin-top: 22px;
+    }
+
+    .bottom {
+      margin-top: 30px;
+
+      color: #a18c50;
+
+      font-size: 13px;
+
+      line-height: 1.5;
+    }
+
+    /* ANIMATIONS */
+
+    @keyframes float {
+
+      0%, 100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-9px);
+      }
+
+    }
+
+    @keyframes appear {
+
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 500px) {
+
+      body {
+        padding: 20px 12px;
+      }
+
+      h1 {
+        font-size: 27px;
+      }
+
+      .question {
+        padding: 20px 15px;
+      }
+
+      .question h2 {
+        font-size: 17px;
+      }
+
+      .answer {
+        font-size: 14px;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="page">
+
+    <!-- TITLE -->
+
+    <div class="top-flower">
+      🌼
+    </div>
+
+    <h1>
+      How Well Do You Know Me, Dada? 😆
+    </h1>
+
+    <p class="intro">
+      Okayyy... time for a tiny test. 👀<br>
+      Don't disappoint me now. ✌🏻😭
+    </p>
+
+
+    <!-- QUESTION 1 -->
+
+    <div class="question">
+
+      <h2>
+        1. Who is the bigger baby? 🧸
+      </h2>
+
+      <button class="answer" onclick="choose(this, 1)">
+        Me obviously 😌
+      </button>
+
+      <button class="answer" onclick="choose(this, 1)">
+        Dada 😭
+      </button>
+
+      <button class="answer" onclick="choose(this, 1)">
+        Both of us ✌🏻
+      </button>
+
+    </div>
+
+
+    <!-- QUESTION 2 -->
+
+    <div class="question">
+
+      <h2>
+        2. What happens when we both have nothing to do? 👀
+      </h2>
+
+      <button class="answer" onclick="choose(this, 2)">
+        We talk about random things 😭
+      </button>
+
+      <button class="answer" onclick="choose(this, 2)">
+        We make up our own nonsense ✌🏻
+      </button>
+
+      <button class="answer" onclick="choose(this, 2)">
+        We somehow end up being chaotic 💀
+      </button>
+
+    </div>
+
+
+    <!-- QUESTION 3 -->
+
+    <div class="question">
+
+      <h2>
+        3. Who usually starts the teasing? 😭
+      </h2>
+
+      <button class="answer" onclick="choose(this, 3)">
+        Me 😇
+      </button>
+
+      <button class="answer" onclick="choose(this, 3)">
+        Dada 😭
+      </button>
+
+      <button class="answer" onclick="choose(this, 3)">
+        We're both guilty ✌🏻
+      </button>
+
+    </div>
+
+
+    <!-- QUESTION 4 -->
+
+    <div class="question">
+
+      <h2>
+        4. If Dada says "I'm sleepy"... what does baby do? 🥺
+      </h2>
+
+      <button class="answer" onclick="choose(this, 4)">
+        "Okay, sleep well Dada~" 😌
+      </button>
+
+      <button class="answer" onclick="choose(this, 4)">
+        "NOOO STAY WITH MEEE" 😭
+      </button>
+
+      <button class="answer" onclick="choose(this, 4)">
+        Pretends to be sad so Dada stays 🥹
+      </button>
+
+    </div>
+
+
+    <!-- QUESTION 5 -->
+
+    <div class="question">
+
+      <h2>
+        5. What am I to Dada? 🐱
+      </h2>
+
+      <button class="answer" onclick="choose(this, 5)">
+        Your baby 💛
+      </button>
+
+      <button class="answer" onclick="choose(this, 5)">
+        Your little cat 🐱
+      </button>
+
+      <button class="answer" onclick="choose(this, 5)">
+        All of the above 🥹
+      </button>
+
+    </div>
+
+
+    <!-- QUESTION 6 -->
+
+    <div class="question">
+
+      <h2>
+        6. If we could spend a whole day together in our RP world, where would we go? 🌼
+      </h2>
+
+      <button class="answer" onclick="choose(this, 6)">
+        Somewhere surrounded by flowers 🌻
+      </button>
+
+      <button class="answer" onclick="choose(this, 6)">
+        A cozy little place just for us 🧸
+      </button>
+
+      <button class="answer" onclick="choose(this, 6)">
+        Anywhere, as long as we're together 💛
+      </button>
+
+    </div>
+
+
+    <!-- QUESTION 7 -->
+
+    <div class="question">
+
+      <h2>
+        7. Who gets spoiled more? 🎀
+      </h2>
+
+      <button class="answer" onclick="choose(this, 7)">
+        Me 🐱
+      </button>
+
+      <button class="answer" onclick="choose(this, 7)">
+        Dada 🐱💛
+      </button>
+
+      <button class="answer" onclick="choose(this, 7)">
+        Mae spoil both of us 💛
+      </button>
+
+    </div>
+
+
+    <!-- QUESTION 8 -->
+
+    <div class="question">
+
+      <h2>
+        8. If we had a whole day together in our RP world, what would we do? 🌻
+      </h2>
+
+      <button class="answer" onclick="choose(this, 8)">
+        Go somewhere pretty 🌼
+      </button>
+
+      <button class="answer" onclick="choose(this, 8)">
+        Stay together and talk 💛
+      </button>
+
+      <button class="answer" onclick="choose(this, 8)">
+        Cause absolute chaos 😭
+      </button>
+
+    </div>
+
+
+    <!-- QUESTION 9 -->
+
+    <div class="question">
+
+      <h2>
+        9. What would I choose from Dada? 🎁
+      </h2>
+
+      <button class="answer" onclick="choose(this, 9)">
+        A flower 🌼
+      </button>
+
+      <button class="answer" onclick="choose(this, 9)">
+        A hug 🫂
+      </button>
+
+      <button class="answer" onclick="choose(this, 9)">
+        Dada himself 😭💛
+      </button>
+
+    </div>
+
+
+    <!-- QUESTION 10 -->
+
+    <div class="question">
+
+      <h2>
+        10. The most important question... 👀
+      </h2>
+
+      <p style="
+        margin-bottom: 15px;
+        font-size: 17px;
+        color: #806633;
+      ">
+        Does Dada love this little baby? 🐱
+      </p>
+
+      <button class="answer" onclick="choose(this, 10)">
+        YES 💛
+      </button>
+
+      <button class="answer" onclick="choose(this, 10)">
+        YESSS 💛
+      </button>
+
+      <button class="answer" onclick="choose(this, 10)">
+        WHY ARE THERE OTHER OPTIONS 😭
+      </button>
+
+    </div>
+
+
+    <!-- FINISH -->
+
+    <button class="finish-btn" onclick="showResult()">
+      Finish the test 🌼
+    </button>
+
+
+    <!-- RESULT -->
+
+    <div class="result" id="result">
+
+      <div class="result-flower">
+        🌼
+      </div>
+
+      <h2>
+        Congratulations, Dada! 🎉
+      </h2>
+
+      <p>
+        You survived my extremely serious
+        scientific test. 😭✌🏻
+      </p>
+
+      <span class="score">
+        10/10 for being my Dada 💛🌼
+      </span>
+
+      <p style="margin-top: 15px;">
+        No refunds.<br>
+        You're stuck with me. 😌💛
+      </p>
+
+      <button class="next-btn" onclick="nextPage()">
+        Next → 🌼
+      </button>
+
+    </div>
+
+
+    <p class="bottom">
+      made with love, nonsense & a little bit of yellow 🌼
+    </p>
+
+  </div>
+
+
+  <script>
+
+    let answers = {};
+
+    function choose(button, questionNumber) {
+
+      const question =
+        button.parentElement;
+
+      const buttons =
+        question.querySelectorAll(".answer");
+
+      buttons.forEach(function(btn) {
+        btn.classList.remove("selected");
+      });
+
+      button.classList.add("selected");
+
+      answers[questionNumber] = true;
+    }
+
+
+    function showResult() {
+
+      const totalQuestions = 10;
+
+      const answered =
+        Object.keys(answers).length;
+
+      if (answered < totalQuestions) {
+
+        alert(
+          "HEY DADAAA 😭✋🏻 You skipped some questions!"
+        );
+
+        return;
+      }
+
+      const result =
+        document.getElementById("result");
+
+      result.style.display = "block";
+
+      result.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+    }
+
+
+    function nextPage() {
+
+      window.location.href =
+        "page5.html";
+
+    }
+
+  </script>
+
+</body>
+  </html>
